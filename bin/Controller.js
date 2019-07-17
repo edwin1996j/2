@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("./models/User");
+const Libros= require("./models/Libros");
 
 class Controller{
     constructor(){
@@ -25,7 +26,13 @@ class Controller{
             res.send( usuarios );
         })
     }
+    getLibros(res){
+        Libros.find({}, (err, libros) => {
+            if(err) throw err;
+            res.send( libros );
+        })
+    }
 
 }
 
-exports.controller = new Controller()
+exports.controller = new Controller() 
